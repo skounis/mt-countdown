@@ -1,0 +1,74 @@
+<?php
+
+/**
+ * @file
+ * Contains mt_countdown.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function mt_countdown_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the mt_countdown module.
+    case 'help.page.mt_countdown':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Configure the content and layout of the Count Down.') . '</p>';
+
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function mt_countdown_theme() {
+  // Theme for mt_countdown block.
+  $themes['mt_countdown'] = [
+    'template' => 'mt_countdown',
+    'variables' => [
+      'data' => NULL,
+    ],
+    $themes['html__countdown'] = [
+      'base hook' => 'html',
+    ],
+  ];
+
+  return $themes;
+
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function mt_countdown_page_attachments(array &$attachments) {
+
+  $config = \Drupal::config('mt_countdown.settings');
+  // Set data to drupal settings.
+  $attachments['#attached']['drupalSettings']['mt_countdown']['alert_message'] = $config->get('alert_message');
+  $attachments['#attached']['drupalSettings']['mt_countdown']['target_url'] = $config->get('target_url');
+  $attachments['#attached']['drupalSettings']['mt_countdown']['dismiss_text'] = $config->get('dismiss_text');
+  $attachments['#attached']['drupalSettings']['mt_countdown']['predefined_palettes'] = $config->get('predefined_palettes');
+  $attachments['#attached']['drupalSettings']['mt_countdown']['banner_colour'] = $config->get('banner_colour');
+  $attachments['#attached']['drupalSettings']['mt_countdown']['banner_text'] = $config->get('banner_text');
+  $attachments['#attached']['drupalSettings']['mt_countdown']['button_colour'] = $config->get('button_colour');
+  $attachments['#attached']['drupalSettings']['mt_countdown']['button_text'] = $config->get('button_text');
+
+  // Attach library.
+  $attachments['#attached']['library'][] = 'mt_countdown/mt_countdown';
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function mt_countdown_theme_suggestions_html(array $variables) {
+  $template_suggestions = array();
+  $template_suggestions[] = 'html__countdown';
+
+  return $template_suggestions;
+}
