@@ -2,20 +2,22 @@
  * MTCountDown scripts
  *  Add any module related script here
  */
-
-$(document).ready(function() {
-  $('.mt-count-down').prependTo('body');
-});
-
 (function ($, Drupal, drupalSettings) {
 
   Drupal.behaviors.mt_countdown = {
     attach: function (context, settings) {
-      // can access setting from 'drupalSettings';
+
+      // Add html element with class "mt-count-down" after the body.
+      $(document).ready(function() {
+        $('.mt-count-down').prependTo('body');
+      });
+
+      // Get access setting from 'drupalSettings'.
       var alert_message = drupalSettings.mt_countdown.alert_message;
       var target_url = drupalSettings.mt_countdown.target_url;
       var dismiss_text = drupalSettings.mt_countdown.dismiss_text;
       var predefined_palettes = drupalSettings.mt_countdown.predefined_palettes;
+      var expiration_date = drupalSettings.mt_countdown.expiration_date;
       var banner_colour;
       var banner_text;
       var button_colour;
@@ -69,6 +71,11 @@ $(document).ready(function() {
             "dismiss": dismiss_text
           }
         });
+      });
+
+      // Start countdown script.
+      $(".count-down-started").countdown(expiration_date, function(event) {
+        $(this).text(event.strftime('%D days %H:%M:%S'));
       });
     }
   };

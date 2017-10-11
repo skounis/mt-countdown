@@ -40,7 +40,20 @@
     <js-placeholder token="{{ placeholder_token }}">
   </head>
   <body{{ attributes.addClass(body_classes) }}>
-  <div class="mt-count-down"></div>
+  <div class="row mt-count-down">
+    <div class="col-xs-12 col-md-6">
+      {{ alert_message }}
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <a class="more" href="{{ target_url }}">{{ dismiss_text|t }}</a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <div class="offer-countdown-wrapper">
+        <span>{{ 'OFFER EXPIRES IN'|t }}</span>
+        <div class="count-down-started"></div>
+      </div>
+    </div>
+  </div>
     {#
       Keyboard navigation/accessibility link to main content section in
       page.html.twig.

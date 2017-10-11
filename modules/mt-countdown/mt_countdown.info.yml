@@ -13,3 +13,4 @@ dependencies:
   - datetime:datetime
   - options:options
   - field_ui:field_ui
+  - block

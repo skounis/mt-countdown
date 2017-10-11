@@ -7,7 +7,10 @@ mt_countdown:
   js:
     //cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js: {preprocess: false, type: external, minified: true}
     js/mt_countdown.js: {}
+    js/jquery.countdown.js: {}
+    js/jquery.countdown.min.js: {}
   dependencies:
     - core/jquery
+    - core/jquery.once
     - core/drupal
     - core/drupalSettings
