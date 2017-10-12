@@ -3,6 +3,7 @@
 namespace Drupal\mt_countdown\Form;
 
 use Drupal;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
@@ -49,9 +50,11 @@ class MTCountDownSettingsForm extends ConfigFormBase {
     ];
     $form['expiration_date'] = [
       '#title' => $this->t('Expiration Date'),
-      '#type' => 'date',
+      '#type' => 'datetime',
       '#required' => TRUE,
-      '#default_value' => $config->get('expiration_date', 1),
+      '#date_date_format' => 'Y-m-d',
+      '#date_time_format' => 'H:i:s',
+      '#default_value' => DrupalDateTime::createFromFormat('Y-m-d H:i:s', $config->get('expiration_date', 1), 'UTC'),
     ];
     $form['target_url'] = [
       '#title' => $this->t('Target URL'),
@@ -123,7 +126,7 @@ class MTCountDownSettingsForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->config('mt_countdown.settings')
       ->set('alert_message', $form_state->getValue('alert_message'))
-      ->set('expiration_date', $form_state->getValue('expiration_date'))
+      ->set('expiration_date', $form_state->getValue('expiration_date')->format("Y-m-d H:i:s"))
       ->set('target_url', $form_state->getValue('target_url'))
       ->set('dismiss_text', $form_state->getValue('dismiss_text'))
       ->set('predefined_palettes', $form_state->getValue('predefined_palettes'))
