@@ -40,6 +40,8 @@ class MTCountDownSettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
 
     $config = $this->config('mt_countdown.settings');
+    $date = $config->get('expiration_date');
+    $date_time = date("Y-m-d H:i:s", strtotime($date));
 
     $form['alert_message'] = [
       '#title' => $this->t('Message'),
@@ -54,7 +56,7 @@ class MTCountDownSettingsForm extends ConfigFormBase {
       '#required' => TRUE,
       '#date_date_format' => 'Y-m-d',
       '#date_time_format' => 'H:i:s',
-      '#default_value' => DrupalDateTime::createFromFormat('Y-m-d H:i:s', $config->get('expiration_date'), 'UTC'),
+      '#default_value' => DrupalDateTime::createFromFormat('Y-m-d H:i:s', $date_time, 'UTC'),
     ];
     $form['target_url'] = [
       '#title' => $this->t('Target URL'),
