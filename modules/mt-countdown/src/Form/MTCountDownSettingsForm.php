@@ -45,7 +45,7 @@ class MTCountDownSettingsForm extends ConfigFormBase {
       '#title' => $this->t('Message'),
       '#type' => 'textarea',
       '#required' => TRUE,
-      '#default_value' => $config->get('alert_message', 1),
+      '#default_value' => $config->get('alert_message'),
       '#placeholder' => $this->t('Enter the alert message.'),
     ];
     $form['expiration_date'] = [
@@ -54,13 +54,13 @@ class MTCountDownSettingsForm extends ConfigFormBase {
       '#required' => TRUE,
       '#date_date_format' => 'Y-m-d',
       '#date_time_format' => 'H:i:s',
-      '#default_value' => DrupalDateTime::createFromFormat('Y-m-d H:i:s', $config->get('expiration_date', 1), 'UTC'),
+      '#default_value' => DrupalDateTime::createFromFormat('Y-m-d H:i:s', $config->get('expiration_date'), 'UTC'),
     ];
     $form['target_url'] = [
       '#title' => $this->t('Target URL'),
       '#type' => 'url',
       '#required' => TRUE,
-      '#default_value' => $config->get('target_url', 1),
+      '#default_value' => $config->get('target_url'),
       '#placeholder' => $this->t('Target URL'),
     ];
     $form['dismiss_text'] = [
