@@ -40,20 +40,38 @@
     <js-placeholder token="{{ placeholder_token }}">
   </head>
   <body{{ attributes.addClass(body_classes) }}>
-  <div class="row mt-count-down">
-    <div class="col-xs-12 col-md-6">
-      {{ alert_message }}
-    </div>
-    <div class="col-xs-6 col-md-3">
-      <a class="more" href="{{ target_url }}">{{ dismiss_text|t }}</a>
-    </div>
-    <div class="col-xs-6 col-md-3">
-      <div class="offer-countdown-wrapper">
-        <span>{{ 'OFFER EXPIRES IN'|t }}</span>
-        <div class="count-down-started"></div>
+  <body{{ attributes.addClass(body_classes) }}>
+    <style>
+      .mt-count-down {
+        background-color: gray;
+      }
+    </style>
+    <div class="mt-count-down-theme mt-count-down alert alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 order-md-2">
+            <div class="offer-countdown-wrapper text-center text-ms-right">
+              <span>{{ 'OFFER EXPIRES IN'|t }}</span>
+              <div class="count-down-started"></div>
+            </div>
+          </div>
+          <div class="col-md-8 order-md-1">
+            <div class="row">
+              <div class="col-sm-8 col-xs-12">
+                <div class="mt-count-down__title">Title of the announcement</div>
+                <div class="mt-count-down__text">{{ alert_message }}</div>
+              </div>
+              <div class="col-sm-4 col-xs-12">
+                <a href="{{ target_url }}" class="mt-count-down__button button button--small">{{ dismiss_text|t }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
     {#
       Keyboard navigation/accessibility link to main content section in
       page.html.twig.
