@@ -40,22 +40,25 @@
     <js-placeholder token="{{ placeholder_token }}">
   </head>
   <body{{ attributes.addClass(body_classes) }}>
-  <body{{ attributes.addClass(body_classes) }}>
+
     <style>
       .mt-count-down {
         background-color: gray;
       }
     </style>
+    
     <div class="mt-count-down-theme mt-count-down alert alert-dismissible fade show" role="alert">
+
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
+
       <div class="container">
         <div class="row">
           <div class="col-md-4 order-md-2">
-            <div class="offer-countdown-wrapper text-center text-ms-right">
+            <div class="mt-count-down__daysto text-center text-ms-right">
               <span>{{ 'OFFER EXPIRES IN'|t }}</span>
-              <div class="count-down-started"></div>
+              <div class="mt-count-down-slot"></div>
             </div>
           </div>
           <div class="col-md-8 order-md-1">
@@ -69,9 +72,10 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </div>  <!-- /.row -->
+      </div> <!-- /.container -->
     </div>
+
     {#
       Keyboard navigation/accessibility link to main content section in
       page.html.twig.
