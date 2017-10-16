@@ -75,7 +75,11 @@
 
       // Start countdown script.
       $(".count-down-started").countdown(expiration_date, function(event) {
-        $(this).text(event.strftime('%D days %H:%M:%S'));
+        $(this).html(event.strftime(''
+            + '<span class="mt-time"><span class="mt-count">%D</span> <span class="mt-label">day%!d</span></span> '
+            + '<span class="mt-time"><span class="mt-count">%H</span> <span class="mt-label">hours</span></span> '
+            + '<span class="mt-time"><span class="mt-count">%M</span> <span class="mt-label">minutes</span></span> '
+            + '<span class="mt-time"><span class="mt-count">%S</span> <span class="mt-label">seconds</span></span>'));
       });
     }
   };
