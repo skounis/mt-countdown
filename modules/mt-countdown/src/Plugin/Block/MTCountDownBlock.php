@@ -21,7 +21,9 @@ class MTCountDownBlock extends BlockBase implements BlockPluginInterface {
   public function build() {
     $config = \Drupal::config('mt_countdown.settings');
     $data = [];
+    $data['title'] = $config->get('title');
     $data['alert_message'] = $config->get('alert_message');
+    $data['days_to'] = $config->get('days_to');
     $data['target_url'] = $config->get('target_url');
     $data['dismiss_text'] = $config->get('dismiss_text');
     return [

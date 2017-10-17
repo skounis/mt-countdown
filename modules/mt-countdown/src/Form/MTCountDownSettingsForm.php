@@ -43,12 +43,24 @@ class MTCountDownSettingsForm extends ConfigFormBase {
     $date = $config->get('expiration_date');
     $date_time = date("Y-m-d H:i:s", strtotime($date));
 
+    $form['title'] = [
+      '#title' => $this->t('Title'),
+      '#type' => 'textfield',
+      '#required' => TRUE,
+      '#default_value' => $config->get('title'),
+    ];
     $form['alert_message'] = [
       '#title' => $this->t('Message'),
       '#type' => 'textarea',
       '#required' => TRUE,
       '#default_value' => $config->get('alert_message'),
       '#placeholder' => $this->t('Enter the alert message.'),
+    ];
+    $form['days_to'] = [
+      '#title' => $this->t('Days To'),
+      '#type' => 'textfield',
+      '#required' => TRUE,
+      '#default_value' => $config->get('days_to'),
     ];
     $form['expiration_date'] = [
       '#title' => $this->t('Expiration Date'),
@@ -78,40 +90,49 @@ class MTCountDownSettingsForm extends ConfigFormBase {
       '#required' => FALSE,
       '#default_value' => $config->get('predefined_palettes'),
       '#options' => [
-        0 => $this->t('Custom'),
-        1 => $this->t('Dark Yellow'),
-        2 => $this->t('Light Green'),
-        3 => $this->t('Dark Green'),
+        0 => $this->t('Theme'),
+        1 => $this->t('Custom'),
+        2 => $this->t('Dark Yellow'),
+        3 => $this->t('Light Green'),
+        4 => $this->t('Dark Green'),
       ],
     ];
-    $form['banner_colour'] = [
+    $form['background'] = [
       '#prefix' => $this->t('<strong>Create your own Pallete</strong>'),
-      '#title' => $this->t('Banner colour'),
+      '#title' => $this->t('Background'),
       '#type' => 'color',
       '#required' => FALSE,
-      '#default_value' => $config->get('banner_colour'),
-      '#placeholder' => $this->t('#Banner'),
+      '#default_value' => $config->get('background'),
     ];
-    $form['banner_text'] = [
-      '#title' => $this->t('Banner text'),
+    $form['title_color'] = [
+      '#title' => $this->t('Title'),
       '#type' => 'color',
       '#required' => FALSE,
-      '#default_value' => $config->get('banner_text'),
-      '#placeholder' => $this->t('#Banner text'),
+      '#default_value' => $config->get('title_color'),
     ];
-    $form['button_colour'] = [
+    $form['message_color'] = [
+      '#title' => $this->t('Message'),
+      '#type' => 'color',
+      '#required' => FALSE,
+      '#default_value' => $config->get('message_color'),
+    ];
+    $form['notes_color'] = [
+      '#title' => $this->t('Notes'),
+      '#type' => 'color',
+      '#required' => FALSE,
+      '#default_value' => $config->get('notes_color'),
+    ];
+    $form['button_background'] = [
       '#title' => $this->t('Button colour'),
       '#type' => 'color',
       '#required' => FALSE,
-      '#default_value' => $config->get('button_colour'),
-      '#placeholder' => $this->t('#Button'),
+      '#default_value' => $config->get('button_background'),
     ];
-    $form['button_text'] = [
+    $form['button_color'] = [
       '#title' => $this->t('Button text'),
       '#type' => 'color',
       '#required' => FALSE,
-      '#default_value' => $config->get('button_text'),
-      '#placeholder' => $this->t('#Button text'),
+      '#default_value' => $config->get('button_color'),
     ];
 
     return parent::buildForm($form, $form_state);
@@ -127,15 +148,19 @@ class MTCountDownSettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->config('mt_countdown.settings')
+      ->set('title', $form_state->getValue('title'))
       ->set('alert_message', $form_state->getValue('alert_message'))
+      ->set('days_to', $form_state->getValue('days_to'))
       ->set('expiration_date', $form_state->getValue('expiration_date')->format("Y-m-d H:i:s"))
       ->set('target_url', $form_state->getValue('target_url'))
       ->set('dismiss_text', $form_state->getValue('dismiss_text'))
       ->set('predefined_palettes', $form_state->getValue('predefined_palettes'))
-      ->set('banner_colour', $form_state->getValue('banner_colour'))
-      ->set('banner_text', $form_state->getValue('banner_text'))
-      ->set('button_colour', $form_state->getValue('button_colour'))
-      ->set('button_text', $form_state->getValue('button_text'))
+      ->set('background', $form_state->getValue('background'))
+      ->set('title_color', $form_state->getValue('title_color'))
+      ->set('message_color', $form_state->getValue('message_color'))
+      ->set('notes_color', $form_state->getValue('notes_color'))
+      ->set('button_background', $form_state->getValue('button_background'))
+      ->set('button_color', $form_state->getValue('button_color'))
       ->save();
 
     // Clear routing and links cache.
