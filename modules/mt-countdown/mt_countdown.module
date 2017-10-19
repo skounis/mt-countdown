@@ -36,8 +36,9 @@ function mt_countdown_theme() {
     ],
   ];
 
-  $themes['html__countdown'] = [
-    'base hook' => 'page',
+  $themes['mt_html'] = [
+    'base hook' => 'html',
+    'template'  => 'mt_html',
     'variables' => [
       'data' => NULL,
     ],
@@ -66,7 +67,7 @@ function mt_countdown_page_attachments(array &$attachments) {
  */
 function mt_countdown_theme_suggestions_html(array $variables) {
   $template_suggestions = array();
-  $template_suggestions[] = 'html__countdown';
+  $template_suggestions[] = 'mt_html';
 
   return $template_suggestions;
 }
