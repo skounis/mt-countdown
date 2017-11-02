@@ -36,14 +36,6 @@ function mt_countdown_theme() {
     ],
   ];
 
-  $themes['html__mt_countdown'] = [
-    'base hook' => 'html',
-    'template'  => 'html--mt_countdown',
-    'variables' => [
-      'data' => NULL,
-    ],
-  ];
-
   return $themes;
 
 }
@@ -60,45 +52,42 @@ function mt_countdown_page_attachments(array &$attachments) {
 
   // Attach library.
   $attachments['#attached']['library'][] = 'mt_countdown/mt_countdown';
-}
 
-/**
- * Implements hook_theme_suggestions_HOOK().
- */
-function mt_countdown_theme_suggestions_html(array $variables) {
-  $template_suggestions = array();
-  $template_suggestions[] = 'html__mt_countdown';
+  // Get template path.
+  $module_path = drupal_get_path('module', 'mt_countdown');
+  $template_file = $module_path . '/templates/mt_countdown_inject.html.twig';
 
-  return $template_suggestions;
-}
-
-/**
- * Implements hook_preprocess().
- */
-function mt_countdown_preprocess_html(&$variables) {
-
-  $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
-  if ($is_admin) {
-    $variables['admin_part'] = TRUE;
-  } else {
-    $variables['admin_part'] = FALSE;
-  }
-
+  // Create configs array.
   $config = \Drupal::config('mt_countdown.settings');
-  $variables['title'] = $config->get('title');
-  $variables['alert_message'] = $config->get('alert_message');
-  $variables['days_to'] = $config->get('days_to');
-  $variables['target_url'] = $config->get('target_url');
-  $variables['dismiss_text'] = $config->get('dismiss_text');
+  $vars = [];
+  $vars['title'] = $config->get('title');
+  $vars['alert_message'] = $config->get('alert_message');
+  $vars['days_to'] = $config->get('days_to');
+  $vars['target_url'] = $config->get('target_url');
+  $vars['dismiss_text'] = $config->get('dismiss_text');
 
   $predefined_palettes = $config->get('predefined_palettes');
-  $variables['predefined_palettes'] = $predefined_palettes ? '' : 'mt-count-down-theme';
+  $vars['title'] = $config->get('title');
+  $vars['alert_message'] = $config->get('alert_message');
+  $vars['days_to'] = $config->get('days_to');
+  $vars['target_url'] = $config->get('target_url');
+  $vars['dismiss_text'] = $config->get('dismiss_text');
 
-  $variables['background'] = $config->get('background');
-  $variables['title_color'] = $config->get('title_color');
-  $variables['message_color'] = $config->get('message_color');
-  $variables['notes_color'] = $config->get('notes_color');
-  $variables['button_background'] = $config->get('button_background');
-  $variables['button_color'] = $config->get('button_color');
+  $vars['predefined_palettes'] = $predefined_palettes ? '' : 'mt-count-down-theme';
 
+  $vars['background'] = $config->get('background');
+  $vars['title_color'] = $config->get('title_color');
+  $vars['message_color'] = $config->get('message_color');
+  $vars['notes_color'] = $config->get('notes_color');
+  $vars['button_background'] = $config->get('button_background');
+  $vars['button_color'] = $config->get('button_color');
+
+  // Render twig template.
+  $twig_service = \Drupal::service('twig');
+  $html = $twig_service->loadTemplate($template_file)->render($vars);
+  $description = [
+    '#type' => 'inline_template',
+    '#children' => $html,
+  ];
+  $attachments['#attached']['html_head'][] = [$description, 'description'];
 }
