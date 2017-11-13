@@ -11,6 +11,7 @@ use Drupal\Core\Form\FormStateInterface;
  * @Block(
  *   id = "mt_countdown",
  *   admin_label = @Translation("CountDown"),
+ *   category = @Translation("More than Themes"),
  * )
  */
 class MTCountDownBlock extends BlockBase implements BlockPluginInterface {
