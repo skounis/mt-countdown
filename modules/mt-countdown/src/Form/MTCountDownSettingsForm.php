@@ -49,12 +49,12 @@ class MTCountDownSettingsForm extends ConfigFormBase {
       '#required' => TRUE,
       '#default_value' => $config->get('title'),
     ];
-    $form['alert_message'] = [
+    $form['prompt_message'] = [
       '#title' => $this->t('Message'),
       '#type' => 'textarea',
       '#required' => TRUE,
-      '#default_value' => $config->get('alert_message'),
-      '#placeholder' => $this->t('Enter the alert message.'),
+      '#default_value' => $config->get('prompt_message'),
+      '#placeholder' => $this->t('Enter the prompt message.'),
     ];
     $form['days_to'] = [
       '#title' => $this->t('Days To'),
@@ -149,7 +149,7 @@ class MTCountDownSettingsForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->config('mt_countdown.settings')
       ->set('title', $form_state->getValue('title'))
-      ->set('alert_message', $form_state->getValue('alert_message'))
+      ->set('prompt_message', $form_state->getValue('prompt_message'))
       ->set('days_to', $form_state->getValue('days_to'))
       ->set('expiration_date', $form_state->getValue('expiration_date')->format("Y-m-d H:i:s"))
       ->set('target_url', $form_state->getValue('target_url'))

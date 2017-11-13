@@ -63,7 +63,7 @@ function mt_countdown_page_attachments(array &$attachments) {
 
   $predefined_palettes = $config->get('predefined_palettes');
   $vars['title'] = $config->get('title');
-  $vars['alert_message'] = $config->get('alert_message');
+  $vars['prompt_message'] = $config->get('prompt_message');
   $vars['days_to'] = $config->get('days_to');
   $vars['target_url'] = $config->get('target_url');
   $vars['dismiss_text'] = $config->get('dismiss_text');
