@@ -26,6 +26,13 @@ class MTCountDownBlock extends BlockBase implements BlockPluginInterface {
     $data['days_to'] = $config->get('days_to');
     $data['target_url'] = $config->get('target_url');
     $data['dismiss_text'] = $config->get('dismiss_text');
+    // Color settings.
+    $data['background'] = $config->get('background');
+    $data['title_color'] = $config->get('title_color');
+    $data['message_color'] = $config->get('message_color');
+    $data['notes_color'] = $config->get('notes_color');
+    $data['button_background'] = $config->get('button_background');
+    $data['button_color'] = $config->get('button_color');
     return [
       '#theme' => 'mt_countdown',
       '#data' => $data,
