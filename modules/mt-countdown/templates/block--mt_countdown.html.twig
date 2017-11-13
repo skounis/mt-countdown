@@ -40,10 +40,14 @@
     {% if data.title %}
       <div class="mt-count-down__title">{{ data.title|t }}</div>
     {% endif %}
-    <div class="mt-count-down__message">{{ data.prompt_message|t }}</div>
+    {% if data.prompt_message %}
+      <div class="mt-count-down__message">{{ data.prompt_message|t }}</div>
+    {% endif %}
   </div>
 
-  <div class="col-xs-6 col-md-3">
-    <a class="mt-count-down__button button button--small" href="{{ data.target_url }}">{{ data.dismiss_text|t }}</a>
-  </div>
+  {% if data.target_url and data.dismiss_text %}
+    <div class="col-xs-6 col-md-3">
+      <a class="mt-count-down__button button button--small" href="{{ data.target_url }}">{{ data.dismiss_text|t }}</a>
+    </div>
+  {% endif %}
 </div>
