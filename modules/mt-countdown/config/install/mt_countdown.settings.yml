@@ -1,6 +1,6 @@
 theme_select: 'block'
 title: '30% Sale now on'
-prompt_message: 'Use “MYCOUPON” at checkout to get it till the end of the month.'
+prompt_message: 'Use MYCOUPON at checkout to get it till the end of the month.'
 target_url: 'http://www.morethanthemes.com'
 dismiss_text: 'Buy Now'
 days_to: 'Offer expires in'
