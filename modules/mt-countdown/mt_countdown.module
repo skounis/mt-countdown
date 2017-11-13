@@ -30,7 +30,7 @@ function mt_countdown_help($route_name, RouteMatchInterface $route_match) {
 function mt_countdown_theme() {
   // Theme for mt_countdown block.
   $themes['mt_countdown'] = [
-    'template'  => 'mt_countdown',
+    'template'  => 'block--mt_countdown',
     'variables' => [
       'data' => NULL,
     ],
@@ -60,11 +60,6 @@ function mt_countdown_page_attachments(array &$attachments) {
   // Create configs array.
   $config = \Drupal::config('mt_countdown.settings');
   $vars = [];
-  $vars['title'] = $config->get('title');
-  $vars['alert_message'] = $config->get('alert_message');
-  $vars['days_to'] = $config->get('days_to');
-  $vars['target_url'] = $config->get('target_url');
-  $vars['dismiss_text'] = $config->get('dismiss_text');
 
   $predefined_palettes = $config->get('predefined_palettes');
   $vars['title'] = $config->get('title');
@@ -82,12 +77,15 @@ function mt_countdown_page_attachments(array &$attachments) {
   $vars['button_background'] = $config->get('button_background');
   $vars['button_color'] = $config->get('button_color');
 
-  // Render twig template.
-  $twig_service = \Drupal::service('twig');
-  $html = $twig_service->loadTemplate($template_file)->render($vars);
-  $description = [
-    '#type' => 'inline_template',
-    '#children' => $html,
-  ];
-  $attachments['#attached']['html_head'][] = [$description, 'description'];
+  $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
+  if (!$is_admin) {
+    // Render twig template.
+    $twig_service = \Drupal::service('twig');
+    $html = $twig_service->loadTemplate($template_file)->render($vars);
+    $description = [
+      '#type' => 'inline_template',
+      '#children' => $html,
+    ];
+    $attachments['#attached']['html_head'][] = [$description, 'description'];
+  }
 }
