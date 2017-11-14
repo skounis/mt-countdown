@@ -10,7 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * @Block(
  *   id = "mt_countdown",
- *   admin_label = @Translation("CountDown"),
+ *   admin_label = @Translation("Count Down"),
  *   category = @Translation("More than Themes"),
  * )
  */
