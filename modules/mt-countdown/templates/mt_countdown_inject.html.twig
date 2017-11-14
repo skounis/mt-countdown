@@ -27,29 +27,41 @@
 
   <div class="container">
     <div class="row">
-      {% if days_to %}
-        <div class="col-md-4 order-md-2">
-          <div class="mt-count-down__daysto text-center text-ms-right">
-            <span class="mt-count-down__notes">{{ days_to|t }}</span>
-            <div class="mt-count-down-slot"></div>
-          </div>
+
+      <div class="col-md-4 order-md-2">
+        <div class="mt-count-down__daysto text-center text-ms-right">
+          <span class="mt-count-down__notes">
+            {% if days_to %}
+              {{ days_to|t }}</span>
+            {% endif %}
+          <div class="mt-count-down-slot"></div>
         </div>
-      {% endif %}
+      </div>
+
       <div class="col-md-8 order-md-1">
         <div class="row">
           <div class="col-sm-8 col-xs-12">
-            {% if title %}
-              <div class="mt-count-down__title">{{ title|t }}</div>
-            {% endif %}
-            {% if prompt_message %}
-              <div class="mt-count-down__message">{{ prompt_message|t }}</div>
+
+            <div class="mt-count-down__title">
+              {% if title %}
+                {{ title|t }}
+              {% endif %}
+            </div>
+
+            <div class="mt-count-down__message">
+              {% if prompt_message %}
+                {{ prompt_message|t }}
+              {% endif %}
+            </div>
+
+          </div>
+
+          <div class="col-sm-4 col-xs-12">
+            {% if target_url and dismiss_text %}
+              <a href="{{ target_url }}" class="mt-count-down__button button button--small">{{ dismiss_text|t }}</a>
             {% endif %}
           </div>
-          {% if target_url and dismiss_text %}
-            <div class="col-sm-4 col-xs-12">
-              <a href="{{ target_url }}" class="mt-count-down__button button button--small">{{ dismiss_text|t }}</a>
-            </div>
-          {% endif %}
+          
         </div>
       </div>
     </div>  <!-- /.row -->
