@@ -28,17 +28,7 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-md-4 order-md-2">
-        <div class="mt-count-down__daysto text-center text-ms-right">
-          <span class="mt-count-down__notes">
-            {% if days_to %}
-              {{ days_to|t }}</span>
-            {% endif %}
-          <div class="mt-count-down-slot"></div>
-        </div>
-      </div>
-
-      <div class="col-md-8 order-md-1">
+      <div class="col-md-8">
         <div class="row">
           <div class="col-sm-8 col-xs-12">
 
@@ -48,7 +38,7 @@
               {% endif %}
             </div>
 
-            <div class="mt-count-down__message">
+            <div class="mt-count-down__text">
               {% if prompt_message %}
                 {{ prompt_message|t }}
               {% endif %}
@@ -64,6 +54,17 @@
           
         </div>
       </div>
+
+      <div class="col-md-4">
+        <div class="mt-count-down__daysto text-center">
+          <span class="mt-count-down__notes">
+            {% if days_to %}
+              {{ days_to|t }}</span>
+            {% endif %}
+          <div class="mt-count-down-slot"></div>
+        </div>
+      </div>
+
     </div>  <!-- /.row -->
   </div> <!-- /.container -->
 </div>
