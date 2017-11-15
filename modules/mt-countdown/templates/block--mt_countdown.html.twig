@@ -25,39 +25,47 @@
   }
 
 </style>
+<div class="mt-count-down mt-count-down-block">
+  <div class="mt-row">
 
-<div class="row mt-count-down-block">
-  <div class="col-md-4 order-md-2">
-    <div class="mt-count-down__daysto text-center text-ms-right">
-      <span class="mt-count-down__notes">
-        {% if data.days_to %}
-          {{ data.days_to|t }}
-        {% endif %}
-      </span>
-      <div class="mt-count-down-slot"></div>
+    <div class="mt-col-md-8">
+      <div class="mt-row">
+
+        <div class="mt-col-sm-8 mt-col-xs-12">
+
+          <div class="mt-count-down__title">
+            {% if data.title %}
+              {{ data.title|t }}
+            {% endif %}
+          </div>
+
+          <div class="mt-count-down__text">
+            {% if data.prompt_message %}
+              {{ data.prompt_message|t }}
+            {% endif %}
+          </div>
+
+        </div>
+
+        <div class="mt-col-sm-4 mt-col-xs-12">
+          {% if data.target_url and data.dismiss_text %}
+            <a class="mt-count-down__button button button--small" href="{{ data.target_url }}">{{ data.dismiss_text|t }}</a>
+          {% endif %}
+        </div>
+
+      </div>
     </div>
-  </div>
 
-  <div class="col-xs-12 col-md-6">
-
-    <div class="mt-count-down__title">
-      {% if data.title %}
-        {{ data.title|t }}
-      {% endif %}
-    </div>
-
-    <div class="mt-count-down__message">
-      {% if data.prompt_message %}
-        {{ data.prompt_message|t }}
-      {% endif %}
+    <div class="mt-col-md-4">
+      <div class="mt-count-down__daysto">
+        <span class="mt-count-down__notes">
+          {% if data.days_to %}
+            {{ data.days_to|t }}
+          {% endif %}
+        </span>
+        <div class="mt-count-down-slot"></div>
+      </div>
     </div>
 
   </div>
-
-  <div class="col-xs-6 col-md-3">
-    {% if data.target_url and data.dismiss_text %}
-      <a class="mt-count-down__button button button--small" href="{{ data.target_url }}">{{ data.dismiss_text|t }}</a>
-    {% endif %}
-  </div>
-
 </div>
