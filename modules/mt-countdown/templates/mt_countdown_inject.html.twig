@@ -9,7 +9,7 @@
   .mt-count-down__message {
     color: {{ message_color }};
   }
-  .mt-count-down__notes {
+  .mt-count-down__daysto {
     color: {{ notes_color }};
   }
   .mt-count-down__button {
@@ -38,7 +38,7 @@
               {% endif %}
             </div>
 
-            <div class="mt-count-down__text">
+            <div class="mt-count-down__message">
               {% if prompt_message %}
                 {{ prompt_message|t }}
               {% endif %}
@@ -48,7 +48,7 @@
 
           <div class="mt-col-sm-4 mt-col-xs-12">
             {% if target_url and dismiss_text %}
-              <a href="{{ target_url }}" class="mt-count-down__button button button--small">{{ dismiss_text|t }}</a>
+              <a href="{{ target_url }}" class="mt-count-down__button">{{ dismiss_text|t }}</a>
             {% endif %}
           </div>
           
