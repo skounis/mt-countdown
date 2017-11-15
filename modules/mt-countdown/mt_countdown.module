@@ -54,8 +54,14 @@ function mt_countdown_page_attachments(array &$attachments) {
   $attachments['#attached']['library'][] = 'mt_countdown/mt_countdown';
 
   // Get template path.
-  $module_path = drupal_get_path('module', 'mt_countdown');
-  $template_file = $module_path . '/templates/mt_countdown_inject.html.twig';
+  $active_theme = \Drupal::service('theme.manager')->getActiveTheme();
+  $template_file = $active_theme->getPath() . '/templates/mt_countdown_inject.html.twig';
+
+  // Check if template in the active theme exist.
+  if (!file_exists($template_file)) {
+    $module_path = drupal_get_path('module', 'mt_countdown');
+    $template_file = $module_path . '/templates/mt_countdown_inject.html.twig';
+  }
 
   // Create configs array.
   $config = \Drupal::config('mt_countdown.settings');
