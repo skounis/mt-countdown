@@ -3,19 +3,19 @@
  *  Add any module related style here
  */
 /*layout*/
-@-ms-viewport {
-  width: device-width;
-}
-html {
+.mt-count-down {
   box-sizing: border-box;
-  -ms-overflow-style: scrollbar;
+  padding: 20px 0;
+  margin: 0;
+  border-radius: 0;
+  border: none;
 }
-*,
-*::before,
-*::after {
+.mt-count-down *,
+.mt-count-down *::before,
+.mt-count-down *::after {
   box-sizing: inherit;
 }
-.mt-count-down .container {
+.mt-count-down .mt-container {
   margin-right: auto;
   margin-left: auto;
   padding-right: 15px;
@@ -23,26 +23,26 @@ html {
   width: 100%;
 }
 @media (min-width: 576px) {
-  .mt-count-down .container {
+  .mt-count-down .mt-container {
     max-width: 540px;
   }
 }
 @media (min-width: 768px) {
-  .mt-count-down .container {
+  .mt-count-down .mt-container {
     max-width: 720px;
   }
 }
 @media (min-width: 992px) {
-  .mt-count-down .container {
+  .mt-count-down .mt-container {
     max-width: 960px;
   }
 }
 @media (min-width: 1200px) {
-  .mt-count-down .container {
+  .mt-count-down .mt-container {
     max-width: 1140px;
   }
 }
-.mt-count-down .row {
+.mt-count-down .mt-row {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -50,11 +50,11 @@ html {
   margin-right: -15px;
   margin-left: -15px;
 }
-.mt-count-down .col-md-8,
-.mt-count-down .col-md-4,
-.mt-count-down .col-sm-8,
-.mt-count-down .col-sm-4,
-.mt-count-down .col-xs-12 {
+.mt-count-down .mt-col-md-8,
+.mt-count-down .mt-col-md-4,
+.mt-count-down .mt-col-sm-8,
+.mt-count-down .mt-col-sm-4,
+.mt-count-down .mt-col-xs-12 {
   position: relative;
   width: 100%;
   min-height: 1px;
@@ -62,31 +62,31 @@ html {
   padding-left: 15px;
 }
 @media (min-width: 576px) {
-  .mt-count-down .col-sm-4 {
+  .mt-count-down .mt-col-sm-4 {
     -ms-flex: 0 0 33.333333%;
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
   }
-  .mt-count-down .col-sm-8 {
+  .mt-count-down .mt-col-sm-8 {
     -ms-flex: 0 0 66.666667%;
     flex: 0 0 66.666667%;
     max-width: 66.666667%;
   }
 }
 @media (min-width: 768px) {
-  .mt-count-down .col-md-4 {
+  .mt-count-down .mt-col-md-4 {
     -ms-flex: 0 0 33.333333%;
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
   }
-  .mt-count-down .col-md-8 {
+  .mt-count-down .mt-col-md-8 {
     -ms-flex: 0 0 66.666667%;
     flex: 0 0 66.666667%;
     max-width: 66.666667%;
   }
 }
-.mt-count-down .text-center {
-  text-align: center!important;
+.mt-count-down .mt-count-down__daysto {
+  text-align: center;
 }
 .mt-count-down.alert button.close {
   padding: 0 10px;
@@ -100,10 +100,4 @@ html {
   -webkit-appearance: none;
   float: right;
   position: relative;
-}
-.mt-count-down {
-  padding: 20px 0;
-  margin: 0;
-  border-radius: 0;
-  border: none;
 }
