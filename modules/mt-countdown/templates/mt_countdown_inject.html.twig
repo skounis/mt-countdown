@@ -5,6 +5,10 @@
   }
   .mt-count-down__title {
     color: {{ title_color }};
+    font-weight: bold;
+  }
+  .mt-count-down__notes {
+    color: {{ notes_color }};
   }
   .mt-count-down__message {
     color: {{ message_color }};
@@ -15,6 +19,8 @@
   .mt-count-down__button {
     background-color: {{ button_background }};
     color: {{ button_color }};
+    border: 1px solid {{ button_color }};
+    padding: 5px;
   }
 
 </style>
@@ -51,7 +57,7 @@
               <a href="{{ target_url }}" class="mt-count-down__button">{{ dismiss_text|t }}</a>
             {% endif %}
           </div>
-          
+
         </div>
       </div>
 
