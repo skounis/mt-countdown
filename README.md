@@ -28,13 +28,17 @@ Start the MySQL container
 Start the Drupal container
 2. ``docker run -d --link drupal-mysql:mysql -p 8080:80 -p 8022:22 -v `pwd`/modules:/var/www/html/modules/custom -t drupal:8``
 
+##### Installation
+
+* DB URL: `some-mysql`
+* DB Name: `drupal`
+* DB User: `root` / `root`
+
 Manage the containers
 
 * List: `docker ps -a`
 * Stop: `docker stop {name}`
 * Remove: `docker rm {name}`
-
-
 
 
 #### Debug
