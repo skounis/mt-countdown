@@ -5,6 +5,7 @@ The module is a wrapper over the [The Final Countdown](http://hilios.github.io/j
 
 
 ### Docker
+#### Wadmiraal
 Based on https://hub.docker.com/r/wadmiraal/drupal/
 > Please note that Docker should be already installed in your box. https://www.docker.com/products/docker
 
@@ -13,15 +14,27 @@ Start the container:
 1. Web and Shell: `docker run -d -p 8080:80 -p 8022:22 -t wadmiraal/drupal:8`
 2. Write code locally: ``docker run -d -p 8080:80  -p 8022:22 -v `pwd`/modules:/var/www/modules/custom -t wadmiraal/drupal:8``
 
+Drupal and Shell access
+* http://localhost:8080 (`admin`/`admin`)
+* `ssh root@localhost -p8022` with password `root`
+
+
+#### Drupal + MySQL
+Base on https://hub.docker.com/_/drupal/
+
+Start the MySQL container
+1. `docker run --name drupal-mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:latest`
+
+Start the Drupal container
+2. ``docker run -d --link drupal-mysql:mysql -p 8080:80 -p 8022:22 -v `pwd`/modules:/var/www/html/modules/custom -t drupal:8``
+
 Manage the containers
 
 * List: `docker ps -a`
 * Stop: `docker stop {name}`
 * Remove: `docker rm {name}`
 
-Drupal and Shell access
-* http://localhost:8080 (`admin`/`admin`)
-* `ssh root@localhost -p8022` with password `root`
+
 
 
 #### Debug
