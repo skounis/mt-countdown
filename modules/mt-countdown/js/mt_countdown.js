@@ -9,7 +9,7 @@
 
       // Add html element with class "mt-count-down" after the body.
       $(document).ready(function() {
-        $('.mt-count-down').prependTo('body');
+        $('.mt-count-down-inject').prependTo('body');
       });
 
       // Get access setting from 'drupalSettings'.
