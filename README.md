@@ -10,10 +10,12 @@ Instructions for a Docker based development workspace. The "Drupal + MySQL" opti
 Base on https://hub.docker.com/_/drupal/
 
 Start the MySQL container
-1. `docker run --name drupal-mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:latest`
+
+- `docker run --name drupal-mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:latest`
 
 Start the Drupal container
-2. ``docker run -d --link drupal-mysql:mysql -p 8080:80 -p 8022:22 -v `pwd`/modules:/var/www/html/modules/custom -t drupal:8``
+
+- ``docker run -d --link drupal-mysql:mysql -p 8080:80 -p 8022:22 -v `pwd`/modules:/var/www/html/modules/custom -t drupal:8``
 
 ##### Installation
 
