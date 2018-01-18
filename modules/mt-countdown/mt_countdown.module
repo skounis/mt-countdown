@@ -73,6 +73,7 @@ function mt_countdown_page_attachments(array &$attachments) {
   $vars['days_to'] = $config->get('days_to');
   $vars['target_url'] = $config->get('target_url');
   $vars['dismiss_text'] = $config->get('dismiss_text');
+  $vars['inject_in_the_body'] = $config->get('inject_in_the_body');
 
   $vars['predefined_palettes'] = $predefined_palettes ? '' : 'mt-count-down-theme';
 

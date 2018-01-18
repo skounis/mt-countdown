@@ -84,6 +84,13 @@ class MTCountDownSettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('dismiss_text'),
       '#placeholder' => $this->t('Got it!'),
     ];
+    $form['inject_in_the_body'] = [
+      '#prefix' => $this->t('Inject in the body'),
+      '#type' => 'checkbox',
+      '#required' => FALSE,
+      '#default_value' => $config->get('inject_in_the_body'),
+      '#suffix' => $this->t('Inject the count down component in the body element of the front page'),
+    ];
     $form['predefined_palettes'] = [
       '#title' => $this->t('Choose a colour theme'),
       '#type' => 'select',
@@ -154,6 +161,7 @@ class MTCountDownSettingsForm extends ConfigFormBase {
       ->set('expiration_date', $form_state->getValue('expiration_date')->format("Y-m-d H:i:s"))
       ->set('target_url', $form_state->getValue('target_url'))
       ->set('dismiss_text', $form_state->getValue('dismiss_text'))
+      ->set('inject_in_the_body', $form_state->getValue('inject_in_the_body'))
       ->set('predefined_palettes', $form_state->getValue('predefined_palettes'))
       ->set('background', $form_state->getValue('background'))
       ->set('title_color', $form_state->getValue('title_color'))
