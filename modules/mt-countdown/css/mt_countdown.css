@@ -101,3 +101,10 @@
   float: right;
   position: relative;
 }
+.mt-count-down-block .mt-count-down__daysto {
+  text-align: left;
+  margin: 15px 0;
+}
+.mt-count-down-block .mt-count-down__button {
+  display: inline-block;
+}
