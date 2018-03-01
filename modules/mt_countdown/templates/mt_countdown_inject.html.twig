@@ -40,17 +40,17 @@
           <div class="mt-row">
             <div class="mt-col-sm-8 mt-col-xs-12">
 
-              <div class="mt-count-down__title">
-                {% if title %}
+              {% if title %}
+                <div class="mt-count-down__title">
                   {{ title|t }}
-                {% endif %}
-              </div>
+                </div>
+              {% endif %}
 
-              <div class="mt-count-down__message">
-                {% if prompt_message %}
+              {% if prompt_message %}
+                <div class="mt-count-down__message">
                   {{ prompt_message|t }}
-                {% endif %}
-              </div>
+                </div>
+              {% endif %}
 
             </div>
 

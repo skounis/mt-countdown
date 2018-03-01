@@ -46,13 +46,13 @@ class MTCountDownSettingsForm extends ConfigFormBase {
     $form['title'] = [
       '#title' => $this->t('Title'),
       '#type' => 'textfield',
-      '#required' => TRUE,
+      '#required' => FALSE,
       '#default_value' => $config->get('title'),
     ];
     $form['prompt_message'] = [
       '#title' => $this->t('Message'),
       '#type' => 'textarea',
-      '#required' => TRUE,
+      '#required' => FALSE,
       '#default_value' => $config->get('prompt_message'),
       '#placeholder' => $this->t('Enter the prompt message.'),
     ];
