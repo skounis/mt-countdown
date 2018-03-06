@@ -84,6 +84,12 @@ class MTCountDownSettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('dismiss_text'),
       '#placeholder' => $this->t('Got it!'),
     ];
+    $form['hint_text'] = [
+      '#title' => $this->t('Hint/Help'),
+      '#type' => 'textfield',
+      '#required' => FALSE,
+      '#default_value' => $config->get('hint_text'),
+    ];
     $form['inject_in_the_body'] = [
       '#prefix' => $this->t('Inject in the body'),
       '#type' => 'checkbox',
@@ -161,6 +167,7 @@ class MTCountDownSettingsForm extends ConfigFormBase {
       ->set('expiration_date', $form_state->getValue('expiration_date')->format("Y-m-d H:i:s"))
       ->set('target_url', $form_state->getValue('target_url'))
       ->set('dismiss_text', $form_state->getValue('dismiss_text'))
+      ->set('hint_text', $form_state->getValue('hint_text'))
       ->set('inject_in_the_body', $form_state->getValue('inject_in_the_body'))
       ->set('predefined_palettes', $form_state->getValue('predefined_palettes'))
       ->set('background', $form_state->getValue('background'))

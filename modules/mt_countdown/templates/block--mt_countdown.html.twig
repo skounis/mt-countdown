@@ -54,4 +54,8 @@
     <a class="mt-count-down__button" href="{{ data.target_url }}">{{ data.dismiss_text|t }}</a>
   {% endif %}
 
+  {% if data.hint_text %}
+    <div class="mt-count-down__hint">{{ data.hint_text }}</div>
+  {% endif %}
+
 </div>

@@ -58,6 +58,9 @@
               {% if target_url and dismiss_text %}
                 <a href="{{ target_url }}" class="mt-count-down__button">{{ dismiss_text|t }}</a>
               {% endif %}
+              {% if hint_text %}
+                <div class="mt-count-down__hint">{{ hint_text }}</div>
+              {% endif %}
             </div>
 
           </div>

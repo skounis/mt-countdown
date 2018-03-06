@@ -27,6 +27,7 @@ class MTCountDownBlock extends BlockBase implements BlockPluginInterface {
     $data['days_to'] = $config->get('days_to');
     $data['target_url'] = $config->get('target_url');
     $data['dismiss_text'] = $config->get('dismiss_text');
+    $data['hint_text'] = $config->get('hint_text');
     // Theme settings.
     $predefined_palettes = $config->get('predefined_palettes');
     switch ($predefined_palettes) {
