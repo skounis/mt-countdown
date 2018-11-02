@@ -11,7 +11,6 @@
       $(document).ready(function() {
           if ($("head").has('#block-countdown').length) {
               var a = $('#block-countdown').text();
-              console.log(a);
               $(a).prependTo('body');
               $('#block-countdown').remove();
           }
