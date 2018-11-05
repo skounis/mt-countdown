@@ -5,7 +5,6 @@ mt_countdown:
       css/mt_countdown.css: {}
   js:
     js/mt_countdown.js: {}
-    js/jquery.countdown.js: {}
     js/jquery.countdown.min.js: {}
   dependencies:
     - core/jquery
