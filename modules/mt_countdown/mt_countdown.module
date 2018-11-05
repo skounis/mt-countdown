@@ -52,21 +52,15 @@ function mt_countdown_page_attachments(array &$attachments) {
 
   // Attach library.
   $attachments['#attached']['library'][] = 'mt_countdown/mt_countdown';
-
-  // Get template path.
-  $active_theme = \Drupal::service('theme.manager')->getActiveTheme();
-  $template_file = $active_theme->getPath() . '/templates/mt_countdown_inject.html.twig';
-
-  // Check if template in the active theme exist.
-  if (!file_exists($template_file)) {
-    $module_path = drupal_get_path('module', 'mt_countdown');
-    $template_file = $module_path . '/templates/mt_countdown_inject.html.twig';
-  }
+}
+function mt_countdown_page_top(array &$page_top) {
 
   // Create configs array.
   $config = \Drupal::config('mt_countdown.settings');
   $vars = [];
 
+  $vars['inject_in_the_body'] = $config->get('inject_in_the_body');
+  if ($vars['inject_in_the_body']) {
   $predefined_palettes = $config->get('predefined_palettes');
   switch ($predefined_palettes) {
     case 0:
@@ -106,15 +100,25 @@ function mt_countdown_page_attachments(array &$attachments) {
   $vars['button_background'] = $config->get('button_background');
   $vars['button_color'] = $config->get('button_color');
 
+    // Get template path.
+    $active_theme = \Drupal::service('theme.manager')->getActiveTheme();
+    $template_file = $active_theme->getPath() . '/templates/mt_countdown_inject.html.twig';
+
+    // Check if template in the active theme exist.
+    if (!file_exists($template_file)) {
+      $module_path = drupal_get_path('module', 'mt_countdown');
+      $template_file = $module_path . '/templates/mt_countdown_inject.html.twig';
+    }
   $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
   if (!$is_admin) {
     // Render twig template.
     $twig_service = \Drupal::service('twig');
     $html = $twig_service->loadTemplate($template_file)->render($vars);
-    $description = [
+      $page_top['mt_countdown_inject'] = [
       '#type' => 'inline_template',
       '#children' => $html,
     ];
-    $attachments['#attached']['html_head'][] = [$description, 'description'];
+}
+
   }
 }
