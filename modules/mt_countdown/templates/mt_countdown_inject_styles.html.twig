@@ -1,0 +1,29 @@
+{% if inject_in_the_body %}
+  <style>
+    .mt-count-down {
+      background-color: {{ background }};
+    }
+    .mt-count-down__title {
+      color: {{ title_color }};
+      font-weight: bold;
+    }
+    .mt-count-down__notes {
+      color: {{ notes_color }};
+    }
+    .mt-count-down__message {
+      color: {{ message_color }};
+    }
+    .mt-count-down__daysto {
+      color: {{ notes_color }};
+    }
+    .mt-count-down__button {
+      background-color: {{ button_background }};
+      color: {{ button_color }};
+      border: 1px solid {{ button_color }};
+      padding: 5px;
+    }
+    .mt-count-down__hint {
+      color: {{ message_color }};
+    }
+  </style>
+{% endif %}

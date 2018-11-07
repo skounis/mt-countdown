@@ -6,15 +6,6 @@
 
   Drupal.behaviors.mt_countdown = {
     attach: function (context, settings) {
-
-      // Add html element with class "mt-count-down" after the body.
-      $(document).ready(function() {
-          if ($("head").has('#block-countdown').length) {
-              var a = $('#block-countdown').text();
-              $(a).prependTo('body');
-              $('#block-countdown').remove();
-          }
-
       // Get access setting from 'drupalSettings'.
       var expiration_date = drupalSettings.mt_countdown.expiration_date;
 
@@ -25,7 +16,6 @@
           '<span class="mt-time"><span class="mt-count">%H</span> <span class="mt-label">hours</span></span> ' +
           '<span class="mt-time"><span class="mt-count">%M</span> <span class="mt-label">minutes</span></span> ' +
           '<span class="mt-time"><span class="mt-count">%S</span> <span class="mt-label">seconds</span></span>'));
-      });
       });
     }
   };
