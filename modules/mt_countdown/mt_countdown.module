@@ -82,7 +82,7 @@ function mt_countdown_page_attachments(array &$attachments) {
       '#type'     => 'inline_template',
       '#children' => $html,
     ];
-    $attachments['#attached']['html_head'][] = [$description, 'description'];
+    $attachments['#attached']['html_head'][] = [$description, 'styles'];
   }
 }
 
