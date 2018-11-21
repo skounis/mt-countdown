@@ -144,13 +144,9 @@ function mt_countdown_page_top(array &$page_top) {
     // Render twig template.
     $twig_service = \Drupal::service('twig');
     $html         = $twig_service->loadTemplate($template_file)->render($vars);
-    $description  = [
-      '#type'     => 'inline_template',
-      '#children' => $html,
-    ];
-
-    $page_top['module'] = [
-      [$description, 'description'],
+    $page_top['mymodule'] = [
+      '#markup' => $html,
+      '#allowed_tags' => ['div', 'button', 'span', 'a'],
     ];
   }
 }
