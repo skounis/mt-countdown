@@ -44,11 +44,12 @@ docker run -d --link drupal-mysql:mysql -p 8080:80 -p 8022:22 -v `pwd`/modules:/
 * DB Name: `drupal`
 * DB User: `root` / `root`
 
-Manage the containers
+#### Manage the containers
 
 * List: `docker ps -a`
 * Stop: `docker stop {name}`
 * Remove: `docker rm {name}`
+* SHS: `docker exec -it {name} /bin/bash`
 
 #### Wadmiraal (deprecated)
 Based on https://hub.docker.com/r/wadmiraal/drupal/
