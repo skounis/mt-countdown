@@ -2,6 +2,23 @@
 This module is a wrapper over the [The Final Countdown](http://hilios.github.io/jQuery.countdown/) Javascript library developed by [@hilios](https://github.com/hilios)
 
 
+### Setup the Local Development env. 
+Checkout this repositoy into a folder in your local box. You will endup with a structure similar to what follows: 
+```
+stavross-air-14:mt-countdown skounis$ pwd
+/Users/skounis/Documents/drupal/mt-countdown
+stavross-air-14:mt-countdown skounis$ ls -la
+total 8
+drwxr-xr-x   6 skounis  staff   192 Jan 22  2018 .
+drwxr-xr-x   6 skounis  staff   192 Dec 29 10:06 ..
+drwxr-xr-x  13 skounis  staff   416 Feb 21 17:17 .git
+-rw-r--r--   1 skounis  staff  1874 Jan 22  2018 README.md
+drwxr-xr-x   4 skounis  staff   128 Mar  7  2018 modules
+drwxr-xr-x   4 skounis  staff   128 Oct  9  2017 themes
+stavross-air-14:mt-countdown skounis$ 
+```
+
+cd into the `mt-coundown` folder and run the docker related commands described in the following sections.
 
 ### Docker
 Instructions for a Docker based development workspace. The "Drupal + MySQL" option is recommended.
