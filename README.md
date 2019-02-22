@@ -40,7 +40,7 @@ docker run -d --link drupal-mysql:mysql -p 8080:80 -p 8022:22 -v `pwd`/modules:/
 
 ##### Installation
 
-* DB URL: `some-mysql`
+* DB URL: `drupal-mysql`
 * DB Name: `drupal`
 * DB User: `root` / `root`
 
