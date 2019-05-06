@@ -6,12 +6,6 @@
 
   Drupal.behaviors.mt_countdown = {
     attach: function (context, settings) {
-
-      // Add html element with class "mt-count-down" after the body.
-      $(document).ready(function() {
-        $('.mt-count-down-inject').prependTo('body');
-      });
-
       // Get access setting from 'drupalSettings'.
       var expiration_date = drupalSettings.mt_countdown.expiration_date;
 
